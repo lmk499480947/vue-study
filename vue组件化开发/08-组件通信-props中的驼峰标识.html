@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 这里不支持驼峰 需要转换 -->
+			<cpn :cInfo ="info"></cpn>
+			<!-- 转换写法 -->
+			<cpn :c-info ="info"></cpn>
+		</div>
+		<template id="cpn">
+			<h2>{{cInfo}}</h2>
+		</template>
+		<script type="text/javascript" src="../vue.js"></script>
+		<script>
+			
+			const cpn = {
+				template:"#cpn",
+				props:{
+					cInfo:{
+						type:Object ,
+						default(){
+							return {}
+						}
+					}
+				}
+			}
+			const app = new Vue({
+				el:"#app",
+				data:{
+					info:{
+						name:'lmk',
+						age:'28',
+						height:170
+					}
+				},
+				components:{
+					cpn: cpn
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+			<style type="text/css">
+				table {
+					border :1px soild #e9e9e9;
+					border-collapse: collapse;
+					border-spacing: 0;
+				}
+				th,td {
+					padding: 8px 16px;
+					border: 1px solid #e9e9e9;
+					text-align: left;
+				}
+				th {
+					background-color: #f7f7f7;
+					color: #5c6b77;
+					font-weight: 600;
+				}
+			</style>
+	</head>
+	<body>
+		<script src="vue.js"></script>
+		<div id="app">
+			<div v-if="books.length">
+			<table>
+				<thead>
+				<tr>
+					<th></th>
+					<th>书籍名称</th>
+					<th>出版日期</th>
+					<th>价格</th>
+					<th>购买数量</th>
+					<th>操作</th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr v-for="(item,index) in books">
+						<th>{{item.id}}</th>
+						<th>{{item.name}}</th>
+						<th>{{item.data}}</th>
+						<th>{{item.price | showPrice}}</th>
+						<th>
+							<button type="button" @click="sub(index)" :disabled="item.count<=1">-</button>
+							{{item.count}}
+							<button type="button" @click="add(index)">+</button>
+						</th>
+						<th><button type="button" @click="removeHandler(index)">移除</button></th>
+					</tr>
+				</tbody>
+			</table>
+			<h3>总价格:{{totalPrice | showPrice}} </h3>
+			</div>
+			<div v-else>
+				<h2>购物车为空</h2>
+			</div>
+		</div>
+		<script type="text/javascript">
+			const app =new Vue({
+				el:"#app",
+				data:{
+					books:[
+						{
+							id:1,
+							name:'书名1',
+							data:'2006-02-02',
+							price:54.00,
+							count:1
+						},
+						{
+							id:2,
+							name:'书名2',
+							data:'2011-08-21',
+							price:113.00,
+							count:1
+						},
+						{
+							id:3,
+							name:'书名3',
+							data:'2004-11-02',
+							price:84.00,
+							count:1
+						},
+						{
+							id:4,
+							name:'书名4',
+							data:'2006-02-12',
+							price:79.00,
+							count:1
+						}
+					]
+				},
+				methods:{
+					add(index){
+						this.books[index].count++
+					},
+					sub(index){
+						if(this.books[index].count==1){
+							return
+						}
+						this.books[index].count--
+					},
+					removeHandler(index){
+						this.books.splice(index,1)
+					}
+				},
+				filters:{
+					showPrice(price){
+						return '¥ '+ price.toFixed(2)
+					}
+				},
+				computed:{
+					totalPrice(){
+						let a=0
+						for (let book of this.books) {
+							a += book.price*book.count
+						}
+						return a
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

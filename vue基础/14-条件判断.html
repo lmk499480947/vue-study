@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+		<!-- if  else -->
+		<h1 v-if="isShow">{{message}}</h1>
+		<h2 v-else>{{movies}}</h2>
+		<!-- 分数 if else if  也可以直接在计数器里算result-->
+		<h3 v-if="score>90">优秀</h3>
+		<h3 v-else-if="score>80">良好</h3>
+		<h3 v-else-if="score>=60">及格</h3>
+		<h3 v-else="score<60">不及格</h3>
+		
+		<h3>{{adresult}}</h3>
+		</div>
+		<script type="text/javascript" src="vue.js"></script>
+		<script>
+			const app = new Vue({
+				el:"#app",
+				data:{
+					score : 71,
+					isShow:true,
+					message:"hello vue",
+					movies:['海王','超人','蝙蝠侠','闪电侠']
+				},
+				computed:{
+					adresult(){
+						let result =''
+						if(this.score>90){
+							result ='优秀'
+						}else if(this.score>80){
+							result='良好'
+						}else if(this.score>60){
+							result='及格'
+						}else{
+							result = '不及格'
+						}
+						return result
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

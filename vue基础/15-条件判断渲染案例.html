@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 笔记span 父居元素 代码块 -->
+			<!-- 关键问题 vue在进行DOM渲染时，会尽可能的复用已经存在的元素，而不是创建新的元素 -->
+			<!-- 解决问题 加key属性， 是否可以复用  key不一样的时候不可以复用-->
+			<span v-if="person">
+				用户名
+				<input type="text" id="username" placeholder="输入用户名" key="username"/>
+			</span>
+			<span v-else>
+				邮箱
+				<input type="text" id="useremail" value="" placeholder="输入邮箱" key="useremail"/>
+			</span>
+			<button @click="switchType">切换类型</button>
+		</div>
+		<script type="text/javascript" src="vue.js"></script>
+		<script>
+			const app = new Vue({
+				el:"#app",
+				data:{
+					person:true,
+					message:"hello vue",
+					movies:['海王','超人','蝙蝠侠','闪电侠']
+				},
+				methods:{
+					switchType(){
+						this.person=!this.person
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

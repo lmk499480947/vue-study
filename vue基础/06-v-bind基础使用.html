@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+		<!-- 语法糖 -->
+		<a :href="ahref">百度一下</a>
+		<!-- 原写法 -->
+		<a v-bind:href="ahref">百度一下</a>
+		</div>
+		<script type="text/javascript" src="vue.js"></script>
+		<script>
+				const app = new Vue({
+					el:"#app",
+					data:{
+						message:"hello vue",
+						ahref:'http://www.baidu.com'
+					}
+				})
+		</script>
+	</body>
+</html>

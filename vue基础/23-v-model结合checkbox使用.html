@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<label for ="agreement">
+				<input type="checkbox" id="agreement" v-model="isAgree">同意协议
+			</label>
+			<br>
+			您选择的是: {{isAgree}}
+			<br>
+			<button type="button" :disabled="!isAgree">下一步</button>
+			
+			<br>
+			爱好：
+			<br>
+			<input type="checkbox"  value="篮球" v-model="hobbies"/>篮球
+			<input type="checkbox"  value="足球"  v-model="hobbies"/>足球
+			<input type="checkbox"  value="乒乓球"  v-model="hobbies"/>乒乓球
+			<input type="checkbox"  value="羽毛球"  v-model="hobbies"/>羽毛球
+			<h3>您的爱好是 :{{hobbies}}</h3>
+			
+			<!-- 第三种 值绑定实现方式 MVVM -->
+			<!-- 注意 要动态绑定(v-bind) for name id value for(要跟哪一个input结合起来) -->
+			<label v-for="item in orginhobbies" :for="item">
+				<input type="checkbox" :name="item" :id="item" :value="item" v-model="movies"/>{{item}}
+			</label>
+			<h3> 你喜欢看：{{movies}}</h3>
+			<br>
+		</div>
+		<script type="text/javascript" src="vue.js"></script>
+		<script>
+			const app = new Vue({
+				el:"#app",
+				data:{
+					message:"hello vue",
+					isAgree:false,
+					hobbies:[],
+					movies:[],
+					orginhobbies:['罪恶王冠','火影忍者','海贼王','死神','犬夜叉','进击的巨人']
+				}
+			})
+		</script>
+	</body>
+</html>

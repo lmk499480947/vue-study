@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app" >
+			<!-- stop修饰符防止事件冒泡 -->
+			<div @click="divClick">
+			aaaaa<button type="button" @click.stop="btn1Click">按钮1</button>
+			<br>
+			</div>
+			<!-- prevent修饰符阻止默认事件，例：表单提交 -->
+			<form action="baidu" >
+				
+				<input type="submit" value="提交" @click.prevent="formSubmit" />
+			</form>
+			<br>
+			<!-- keyup针对所有按键抬起事件，后面加enter后 只针对回车按键抬起事件 -->
+			<input type="text" @keyup.enter="btnKeyUp" v-model="inputValue" />
+			<br>
+			<!-- 只触发一次回调 -->
+			<button type="button" @click.once="btnonce"> 只触发一次 </button>
+			
+		</div>
+		<script type="text/javascript" src="vue.js"></script>
+		<script>
+			const app = new Vue({
+				el:"#app",
+				data:{
+					message:"hello vue",
+					inputValue:''
+				},
+				methods:{
+					divClick(){
+						console.log("divClick")
+					},
+					btn1Click(){
+						console.log("btn1Click")
+					},
+					formSubmit(){
+						console.log('formSubmit')
+					},
+					btnKeyUp(){
+						console.log(this.inputValue)
+					},
+					btnonce(){
+						console.log('btnonce')
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

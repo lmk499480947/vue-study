@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<button type="button" @click="btnClick1">按钮1</button>
+			<button type="button" @click="btnClick2(abc)">按钮2</button>
+			<button type="button" @click="btnClick3">按钮3</button>
+			<button type="button" @click="btnClick4(abc,$event)">按钮4</button>
+		</div>
+		<script type="text/javascript" src="vue.js"></script>
+		<script>
+			const app = new Vue({
+				el: "#app",
+				data: {
+					message: "hello vue",
+					abc:123444,
+				},
+				methods:{
+					btnClick1(){
+						console.log("btn1")
+					},
+					btnClick2(abc){
+						console.log(abc)
+					},
+					btnClick3(event){
+						console.log(event)
+					},
+					btnClick4(abc,event){
+						console.log(abc,event)
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
