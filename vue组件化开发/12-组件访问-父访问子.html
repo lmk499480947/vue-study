@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<cpn></cpn>
+			<cpn></cpn>
+			<cpn></cpn>
+			<cpn ref="aaa" ></cpn>
+			<button @click="vist">访问子组件</button>
+		</div>
+		<template id="cpn">
+			<div>
+				<h2>{{name}}</h2>
+			</div>
+		</template>
+		<script type="text/javascript" src="../vue.js"></script>
+		<script>
+			const cpn = {
+				template : '#cpn',
+				methods:{
+					showMessage(){
+						console.log('我是子组件的showMassage方法')
+					}
+				},
+				data(){
+					return {
+						name:'子组件123'
+					}
+				}
+			}
+			const app = new Vue({
+				el:"#app",
+				data:{
+					message:"hello vue",
+				},
+				components:{
+					cpn
+				},
+				methods:{
+					vist(){
+						// children方式访问 ： 数组 不常用
+						// console.log(this.$children) 
+						// this.$children[0].showMessage()
+						//ref方式访问 更准确  对象
+						console.log(this.$refs.aaa.name)
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

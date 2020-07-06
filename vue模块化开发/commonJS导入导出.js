@@ -1,0 +1,11 @@
+module.exports.age=1
+module.exports.foo=function(){
+	console.log('commonjs-function')
+}
+module.exports={
+	age:1,
+	height:179,
+	fooa:function(){
+		console.log("commonjs-funtion2")
+	}
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 父组件替换插槽里面的标签，但是内容由子组件提供 -->
+			<cpn>
+				<template v-slot:slot1="slot">
+					<span v-for="item in slot.data">{{item}} -</span>
+					<br>
+					<span >{{slot.data.join(" - ")}}</span>
+					<br>
+					<span >{{slot.data.join(" * ")}}</span>
+				</template>
+			</cpn>
+		</div>
+		<template id="cpn">
+			<div>
+				<slot name="slot1" :data="pLanguges">
+				<ul>
+					<li v-for="item in pLanguges"> {{item}}</li>
+				</ul>
+				</slot>
+				
+				<slot :msg="pLanguges">
+				<ul>
+					<li v-for="item in pLanguges"> {{item}}</li>
+				</ul>
+				</slot>
+			</div>
+		</template>
+		<script type="text/javascript" src="../vue.js"></script>
+		<script>
+			const app = new Vue({
+				el:"#app",
+				data:{
+					message:"hello vue",
+				},
+				components:{
+					cpn:{
+						template:'#cpn',
+						data(){
+							return{
+								pLanguges:['java','go','dart','c++','python']
+							}
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

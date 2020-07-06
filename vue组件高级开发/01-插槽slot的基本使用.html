@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- <cpn></cpn> -->
+			<!-- <cpn><button type="button">按钮</button></cpn> -->
+			<cpn>
+				<h3>插槽蚊子</h3>
+			</cpn>
+		</div>
+		<template id="cpn">
+			<div>
+				
+				<h2>我是标题</h2>
+				<slot><span>123123</span></slot>
+				 <!-- 可以有默认值 123123-->
+			</div>
+		</template>
+		<script type="text/javascript" src="../vue.js"></script>
+		<script>
+			const app = new Vue({
+				el:"#app",
+				data:{
+					message:"hello vue",
+				},
+				components:{
+					cpn:{
+						template:'#cpn'
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
