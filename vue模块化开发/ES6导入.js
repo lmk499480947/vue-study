@@ -22,5 +22,4 @@ import only from './ES6导出.js'
 console.log(only.a)
 console.log(only.b)
 
-
-
+window.a = function(){console.log(1111)}

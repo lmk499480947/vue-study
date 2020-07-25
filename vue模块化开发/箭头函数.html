@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			const abc = () =>{
+				console.log('abc')
+			}
+			
+			const sum =(num,num2) =>{
+				return num+num2
+			}
+			const power = num =>{
+				return num*num
+			}
+			const plusa = (num1,num2) => num1-num2
+			abc()
+			console.log(sum(2,3))
+			console.log(power(2))
+			console.log(plusa(10,3))
+			
+			
+			//箭头函数中的this引用是像外层一层层查找 直到有this的定义
+			const lmk ={
+				aaa(){
+					setTimeout(function(){
+						setTimeout(function(){
+							console.log(this)
+						})
+						
+						setTimeout(()=>{
+							console.log(this)
+						})
+					})
+					
+					setTimeout(()=>{
+						setTimeout(function(){
+							console.log(this)
+						})
+						
+						setTimeout(()=>{
+							console.log(this)
+						})
+					})
+				}
+			}
+			lmk.aaa()
+		</script>
+	</body>
+</html>
